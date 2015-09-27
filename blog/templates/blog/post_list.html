@@ -1,38 +1,13 @@
-{% load staticfiles %}
-<html>
-	<head>
-		<title>Aleia's DjangoGirls Blog</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="{% static "css/blog.css" %}">
-		<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="page-header">
-			<h1><a href=" ">Aleia's Django Girls Blog</a></h1>
-		</div>
+{% extends "blog/base.html" %}
 
-		<div class="post">
-			<p>published: 09.26.2015, 14:15</p>
-			<h2><a href=" ">My first post</a></h2>
-			<p>Guest it he tears aware as. Make my no cold of need. He been past in by my hard. Warmly thrown oh he common future. Otherwise concealed favourite frankness on be at dashwoods defective at. Sympathize interested simplicity at do projecting increasing terminated. As edward settle limits at in.</p>
-		</div>
-
-		<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% for post in posts %}
-                <div class="post">
-                    <div class="date">
-                        <p>published: {{ post.published_date }}</p>
-                    </div>
-                    <h1><a href="">{{ post.title }}</a></h1>
-                    <p>{{ post.text|linebreaks }}</p>
-                </div>
-            {% endfor %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaks }}</p>
         </div>
-    </div>
-</div>
-
-	</body>
-</html>
+    {% endfor %}
+{% endblock content %}
